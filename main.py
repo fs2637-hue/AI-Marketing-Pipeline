@@ -30,9 +30,15 @@ def run_pipeline(topic):
     # 3. Send newsletters
     logs = {}
 
-    for persona, users in segments.items():
-        newsletter = content["newsletters"][persona]
-        logs[persona] = send_newsletter(users, newsletter)
+  for persona, users in segments.items():
+
+    newsletter = content["newsletters"].get(persona)
+
+    if not newsletter:
+        print(f"⚠️ Missing newsletter for persona: {persona}")
+        continue
+
+    logs[persona] = send_newsletter(users, newsletter)
 
     print("\n✅ Newsletters sent")
 
