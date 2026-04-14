@@ -8,8 +8,11 @@ def segment_contacts(contacts):
     segments = {"founders": [], "marketers": [], "freelancers": []}
 
     for c in contacts:
-        segments[c["persona"]].append(c)
+        persona = c.get("persona")
 
+        if persona not in segments:
+            print(f"⚠️ Skipping unknown persona: {persona}")
+            continue
     return segments
 
 def send_newsletter(contacts, newsletter_content):
