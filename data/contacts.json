@@ -1,0 +1,14 @@
+[
+  {
+    "email": "alex@agency.com",
+    "persona": "founders"
+  },
+  {
+    "email": "sam@marketing.com",
+    "persona": "marketers"
+  },
+  {
+    "email": "jordan@freelance.com",
+    "persona": "freelancers"
+  }
+]
