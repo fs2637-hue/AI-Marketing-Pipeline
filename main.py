@@ -1,12 +1,19 @@
+import os
+import json
+
 print("AI Marketing Pipeline started")
+
 from content_generator import generate_content
 from crm import load_contacts, segment_contacts, send_newsletter, log_campaign
 from analytics import generate_metrics, analyze_performance
-import json
+
 
 def run_pipeline(topic):
 
     print("\n🚀 Starting AI Marketing Pipeline...\n")
+
+    # ✅ FIX 1: ensure folders exist
+    os.makedirs("outputs", exist_ok=True)
 
     # 1. Generate content
     content = generate_content(topic)
@@ -41,9 +48,18 @@ def run_pipeline(topic):
     with open("outputs/summary.txt", "w") as f:
         f.write(summary)
 
+    print("\n📊 SUMMARY:\n")
     print(summary)
 
     log_campaign(topic)
 
+
 if __name__ == "__main__":
-    run_pipeline("AI in Creative Automation")
+
+    # ✅ FIX 2: CI-safe execution
+    if os.getenv("CI") == "true":
+        print("CI mode detected → running default topic")
+        run_pipeline("AI in Creative Automation")
+    else:
+        topic = input("Enter topic: ")
+        run_pipeline(topic)
