@@ -5,14 +5,20 @@ def load_contacts():
         return json.load(f)
 
 def segment_contacts(contacts):
-    segments = {"founders": [], "marketers": [], "freelancers": []}
+    segments = {
+        "founders": [], 
+        "marketers": [], 
+        "freelancers": []
+    }
 
     for c in contacts:
         persona = c.get("persona")
 
         if persona not in segments:
-            print(f"⚠️ Skipping unknown persona: {persona}")
+            print(f"⚠️ Skipping invalid persona: {persona}")
             continue
+        segments[persona].append(c)
+    
     return segments
 
 def send_newsletter(contacts, newsletter_content):
