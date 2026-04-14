@@ -28,3 +28,13 @@ def send_newsletter(contacts, newsletter_content):
 
 def log_campaign(topic):
     print(f"\n✅ Campaign logged for topic: {topic}")
+HUBSPOT_BASE_URL = "https://api.hubapi.com"
+
+def create_contact(email, persona):
+    # clearly structured payload
+    payload = {
+        "properties": {
+            "email": email,
+            "persona": persona
+        }
+    }
