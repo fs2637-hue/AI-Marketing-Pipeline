@@ -18,3 +18,20 @@ This project simulates how modern growth teams can automate the full content lif
 ---
 
 # 🏗️ System Architecture
+
+The pipeline is designed as a modular workflow:
+
+1. **Content Generation**  
+   AI generates a blog post and persona-specific newsletters based on a topic.
+
+2. **CRM Layer**  
+   Contacts are loaded and segmented into personas (Founders, Marketers, Freelancers).
+
+3. **Distribution Layer**  
+   Each persona receives a tailored newsletter (simulated email sending).
+
+4. **Analytics Layer**  
+   Engagement metrics are generated to simulate campaign performance.
+
+5. **Insight Layer**  
+   The system produces a summary with optimization recommendations.
