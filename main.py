@@ -1,4 +1,5 @@
 import os
+os.makedirs("outputs", exist_ok=True)
 import json
 
 print("AI Marketing Pipeline started")
@@ -35,7 +36,6 @@ def run_pipeline(topic):
     newsletter = content["newsletters"].get(persona)
 
     if not newsletter:
-        print(f"⚠️ Missing newsletter for persona: {persona}")
         continue
 
     logs[persona] = send_newsletter(users, newsletter)
